@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Policy DSL Document Schema",
+  "description": "JSON Schema for Assumption-Gated BioDesign Runtime policy DSL documents",
+  "type": "object",
+  "required": ["schemaVersion", "policyId", "description", "rules", "defaultDecision"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "enum": ["policy-dsl-v1"],
+      "description": "Schema version identifier"
+    },
+    "policyId": {
+      "type": "string",
+      "description": "Unique identifier for this policy document"
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description of the policy"
+    },
+    "rules": {
+      "type": "array",
+      "description": "List of policy rules evaluated in priority order",
+      "items": {
+        "type": "object",
+        "required": ["ruleId", "description", "priority", "when", "effect", "reason"],
+        "additionalProperties": false,
+        "properties": {
+          "ruleId": {
+            "type": "string",
+            "description": "Unique identifier for this rule"
+          },
+          "description": {
+            "type": "string",
+            "description": "Human-readable description of the rule"
+          },
+          "priority": {
+            "type": "integer",
+            "description": "Priority number; lower values evaluated first (0 is highest priority)"
+          },
+          "when": {
+            "type": "array",
+            "description": "Conditions that must all match for this rule to apply",
+            "items": {
+              "type": "object",
+              "required": ["field", "operator"],
+              "additionalProperties": false,
+              "properties": {
+                "field": {
+                  "type": "string",
+                  "enum": [
+                    "toolId",
+                    "surface",
+                    "validityTier",
+                    "isDraft",
+                    "provenanceIds",
+                    "evidenceIds",
+                    "assumptionIds",
+                    "requiresHumanGate",
+                    "humanGateStatus"
+                  ],
+                  "description": "Field to evaluate in the condition"
+                },
+                "operator": {
+                  "type": "string",
+                  "enum": ["equals", "notEquals", "in", "notIn", "exists", "empty", "notEmpty"],
+                  "description": "Comparison operator to apply"
+                },
+                "value": {
+                  "oneOf": [
+                    { "type": "string" },
+                    { "type": "boolean" },
+                    { "type": "array", "items": { "type": "string" } }
+                  ],
+                  "description": "Value to compare against"
+                }
+              }
+            }
+          },
+          "effect": {
+            "type": "string",
+            "enum": ["allow", "block", "gate", "demoOnly"],
+            "description": "Decision effect if the rule matches"
+          },
+          "blockCode": {
+            "type": "string",
+            "description": "Code explaining why the block occurs (optional)"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Human-readable reason for this decision"
+          },
+          "overridePath": {
+            "type": "string",
+            "enum": ["human-review", "not-allowed"],
+            "description": "Path to override this decision (optional)"
+          }
+        }
+      }
+    },
+    "defaultDecision": {
+      "type": "object",
+      "required": ["effect", "blockCode", "reason"],
+      "additionalProperties": false,
+      "properties": {
+        "effect": {
+          "type": "string",
+          "enum": ["block"],
+          "description": "Default effect when no rules match (must be 'block')"
+        },
+        "blockCode": {
+          "type": "string",
+          "enum": ["MISSING_POLICY"],
+          "description": "Code for missing policy block"
+        },
+        "reason": {
+          "type": "string",
+          "description": "Reason for default block decision"
+        }
+      }
+    }
+  }
+}

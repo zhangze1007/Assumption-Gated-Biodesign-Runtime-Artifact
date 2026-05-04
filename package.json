@@ -1,0 +1,34 @@
+{
+  "name": "assumption-gated-biodesign-runtime",
+  "version": "1.0.0",
+  "description": "Paper artifact for Assumption-Gated BioDesign Runtime - trust evaluation framework for biodesign tools",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist/",
+    "prebench": "npm run build",
+    "bench": "node dist/scripts/run_benchmark.js",
+    "genplot": "python3 scripts/generate_figure6.py",
+    "test": "echo 'Tests not included in artifact' && exit 1",
+    "benchmark": "tsx scripts/run_benchmark.ts",
+    "figure6": "python scripts/generate_figure6.py",
+    "reproduce": "npm run build && npm run benchmark && npm run figure6"
+  },
+  "keywords": [
+    "biodesign",
+    "trust",
+    "runtime",
+    "assumption",
+    "gate",
+    "artifact",
+    "benchmark"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "tsx": "^4.20.0"
+  }
+}

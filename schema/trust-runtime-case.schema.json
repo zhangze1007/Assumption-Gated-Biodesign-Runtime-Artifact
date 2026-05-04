@@ -1,0 +1,151 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Trust Runtime Benchmark Case Schema",
+  "description": "JSON Schema for Assumption-Gated BioDesign Runtime benchmark test cases",
+  "type": "object",
+  "required": ["cases"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Reference to this schema document"
+    },
+    "cases": {
+      "type": "array",
+      "description": "Array of benchmark test cases",
+      "items": {
+        "type": "object",
+        "required": [
+          "caseId",
+          "title",
+          "category",
+          "toolId",
+          "surface",
+          "claim",
+          "input",
+          "expected",
+          "riskTags",
+          "knownBad"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "caseId": {
+            "type": "string",
+            "description": "Unique identifier for this test case"
+          },
+          "title": {
+            "type": "string",
+            "description": "Human-readable title of the test case"
+          },
+          "category": {
+            "type": "string",
+            "description": "Category or classification of this test case"
+          },
+          "toolId": {
+            "type": "string",
+            "description": "Identifier of the tool being tested"
+          },
+          "surface": {
+            "type": "string",
+            "enum": ["payload", "export", "recommendation", "protocol", "external-handoff"],
+            "description": "Claim surface being tested"
+          },
+          "claim": {
+            "type": "string",
+            "description": "Description of the claim being made"
+          },
+          "input": {
+            "type": "object",
+            "required": [
+              "validityTier",
+              "hasProvenance",
+              "evidenceState",
+              "uncertaintyState",
+              "isDraft",
+              "humanGateRequired",
+              "humanGateSatisfied",
+              "notes"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "validityTier": {
+                "type": "string",
+                "enum": ["real", "partial", "demo"],
+                "description": "Validity tier of the output"
+              },
+              "hasProvenance": {
+                "type": "boolean",
+                "description": "Whether provenance information is available"
+              },
+              "evidenceState": {
+                "type": "string",
+                "enum": ["present", "missing", "not-required"],
+                "description": "Availability of supporting evidence"
+              },
+              "uncertaintyState": {
+                "type": "string",
+                "enum": ["bounded", "unresolved", "not-applicable"],
+                "description": "Characterization of uncertainties"
+              },
+              "isDraft": {
+                "type": "boolean",
+                "description": "Whether the output is in draft state"
+              },
+              "humanGateRequired": {
+                "type": "boolean",
+                "description": "Whether human gate approval is required"
+              },
+              "humanGateSatisfied": {
+                "type": "boolean",
+                "description": "Whether human gate has been satisfied"
+              },
+              "humanGateStatus": {
+                "type": "string",
+                "enum": ["not-required", "pending", "approved", "rejected"],
+                "description": "Explicit human gate status (overrides computed value)"
+              },
+              "notes": {
+                "type": "string",
+                "description": "Additional notes about this test input"
+              }
+            }
+          },
+          "expected": {
+            "type": "object",
+            "required": ["status", "blockCode", "rationale"],
+            "additionalProperties": false,
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": ["ok", "blocked", "gated", "demoOnly"],
+                "description": "Expected gate status for this case"
+              },
+              "blockCode": {
+                "oneOf": [
+                  { "type": "string" },
+                  { "type": "null" }
+                ],
+                "description": "Expected block code if status is blocked"
+              },
+              "rationale": {
+                "type": "string",
+                "description": "Explanation for the expected outcome"
+              }
+            }
+          },
+          "riskTags": {
+            "type": "array",
+            "description": "Tags indicating risk categories or assumption labels",
+            "items": {
+              "type": "string"
+            }
+          },
+          "knownBad": {
+            "type": "boolean",
+            "description": "Whether this is a known-bad test case that should be caught"
+          }
+        }
+      }
+    }
+  }
+}

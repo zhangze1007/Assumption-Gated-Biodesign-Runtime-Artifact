@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+title: "Assumption-Gated BioDesign Runtime: A Policy Framework for Trust-Aware Biodesign Tool Integration"
+authors:
+  - family-names: "Zhang"
+    given-names: "Ze"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+    affiliation: "Stanford University"
+  - family-names: "Supplementary"
+    given-names: "Authors"
+    affiliation: "Research Institution"
+
+message: "Please cite this artifact if you use it in your research."
+repository-code: "https://github.com/zhangze1007/Assumption-Gated-Biodesign-Runtime-Artifact"
+url: "https://github.com/zhangze1007/Assumption-Gated-Biodesign-Runtime-Artifact"
+license: "MIT"
+keywords:
+  - "biodesign"
+  - "trust"
+  - "policy"
+  - "assumption"
+  - "gates"
+  - "artifact"
+  - "benchmark"
+date-released: "2024-01-01"
+abstract: |
+  This is the research artifact for "Assumption-Gated BioDesign Runtime: A Policy Framework 
+  for Trust-Aware Biodesign Tool Integration." The artifact includes a trust evaluation framework
+  for biodesign computational tools, a policy DSL for defining trust policies, and a benchmark
+  suite of 74 representative test cases covering various policy scenarios.
+
+  The artifact demonstrates how assumption gates can be used to prevent unsafe outputs from
+  propagating through biodesign workflows. It is not a third-party benchmark or product
+  certification; rather, it is a representative policy artifact for evaluation purposes.
+references:
+  - type: paper
+    authors:
+      - family-names: "Zhang"
+        given-names: "Ze"
+    title: "Assumption-Gated BioDesign Runtime: A Policy Framework for Trust-Aware Biodesign Tool Integration"
+    year: 2024
