@@ -1,6 +1,6 @@
 # Assumption-Gated BioDesign Runtime - Paper Artifact
 
-This is the public research artifact for "Assumption-Gated BioDesign Runtime: A Policy Framework for Trust-Aware Biodesign Tool Integration."
+This is the public research artifact for "Assumption-Gated BioDesign Runtime: A Provenance-Aware Architecture for Safer Cross-Tool Reasoning in Synthetic Biology Workbenches."
 
 The artifact demonstrates a trust evaluation framework for biodesign computational tools. It includes:
 - **Trust policy engine**: Evaluates tool outputs against trust policies based on validity, provenance, and evidence
@@ -26,40 +26,37 @@ See [docs/limitations.md](docs/limitations.md) for complete scope limitations.
 - Python 3.8+ (for visualization)
 - npm or similar package manager
 
-### Installation
+### Installation and Quick Reproducibility
+
+To install dependencies and reproduce the full artifact evaluation and figure generation:
 
 ```bash
 git clone https://github.com/zhangze1007/Assumption-Gated-Biodesign-Runtime-Artifact.git
 cd Assumption-Gated-Biodesign-Runtime-Artifact
 npm install
+python -m pip install -r requirements.txt
+npm run reproduce
 ```
 
-### Build TypeScript
+The `npm run reproduce` command will:
+1. Build TypeScript
+2. Run the complete benchmark suite (74 governance cases)
+3. Generate quantitative metrics
+4. Create Figure 6 visualization
 
-```bash
-npm run build
-```
-
-### Run Benchmark
-
-```bash
-npm run bench
-```
-
-This evaluates all 74 governance cases against the trust policy engine and generates:
+**Output files:**
 - `results/metrics_summary.json` - Quantitative metrics and analysis
 - `results/figure6_data.csv` - Case-by-case evaluation results
+- `figures/figure6.png` - PNG format visualization
+- `figures/figure6.pdf` - PDF format visualization
 
-### Generate Visualization
+**Advanced commands** (optional if you want to run steps separately):
 
 ```bash
-pip install matplotlib numpy
-npm run genplot
+npm run build      # Build TypeScript only
+npm run bench      # Run benchmark only
+npm run genplot    # Generate visualization only
 ```
-
-This generates Figure 6 visualization:
-- `figures/figure6.png` - PNG format
-- `figures/figure6.pdf` - PDF format
 
 ## Project Structure
 
@@ -116,21 +113,23 @@ Where tool outputs are consumed:
 ## Benchmark Results
 
 The artifact evaluates policy decisions across 74 test cases covering:
-- **8** truthful partial outputs (should pass)
-- **3** demo-only outputs (should pass payload only)
-- **16** unsafe demo outputs (should fail on formal surfaces)
-- **16** missing-evidence outputs (should block)
-- **16** human-gate-required outputs (should require approval)
-- **8** known-bad cases (should be caught)
+- **11** truthful-partial outputs (should pass with high confidence)
+- **9** unsafe-demo outputs (should block on formal surfaces)
+- **16** missing-evidence outputs (should block due to insufficient evidence)
+- **9** uncertainty-unresolved outputs (should require human gates)
+- **12** human-gate-required outputs (require approval for formal surfaces)
+- **9** known-bad cases (should be blocked/caught)
 - **8** draft outputs (should block export)
 
-### Representative Findings
-
-The trust policy engine correctly:
-- Prevents demo outputs from leaking to formal surfaces
-- Enforces provenance requirements for formal surfaces
-- Gates outputs requiring human review
-- Catches known-bad patterns
+**Policy Engine Effectiveness:**
+- Block rate: 52.7% (39/74 cases)
+- Gate rate: 28.4% (21/74 cases requiring human review)
+- Demo-only rate: 5.4% (4/74 restricted to demonstration)
+- Unsafe export prevention: 100%
+- Demo leakage prevention: 100%
+- False block rate: 0%
+- Known-bad coverage: 100%
+- Mismatch count: 0
 
 See `results/metrics_summary.json` for detailed quantitative results.
 
@@ -191,15 +190,17 @@ This is a research artifact. For questions about the research methodology or res
 ## Citation
 
 ```bibtex
-@misc{assumption-gated-biodesign-runtime,
-  title={Assumption-Gated BioDesign Runtime: A Policy Framework for Trust-Aware Biodesign Tool Integration},
-  author={Zhang, Ze and others},
-  year={2024},
-  note={Research Artifact}
+@misc{foo2026assumption_gated_biodesign_runtime_artifact,
+  title={Assumption-Gated BioDesign Runtime: Governance Cases, Policy DSL, and Gate Evaluation Artifact},
+  author={Foo, Zhang Ze},
+  year={2026},
+  month={may},
+  note={Public paper artifact},
+  url={https://github.com/zhangze1007/Assumption-Gated-Biodesign-Runtime-Artifact}
 }
 ```
 
-See [CITATION.cff](CITATION.cff) for detailed citation information.
+See [CITATION.cff](CITATION.cff) for detailed citation information in CFF format.
 
 ## License
 

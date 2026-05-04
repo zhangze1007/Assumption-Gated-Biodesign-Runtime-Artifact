@@ -1,7 +1,7 @@
 {
   "name": "assumption-gated-biodesign-runtime",
   "version": "1.0.0",
-  "description": "Paper artifact for Assumption-Gated BioDesign Runtime - trust evaluation framework for biodesign tools",
+  "description": "Public paper artifact for Assumption-Gated BioDesign Runtime: governance cases, policy DSL, gate evaluation, and Figure 6 reproduction.",
   "license": "MIT",
   "type": "module",
   "main": "dist/index.js",

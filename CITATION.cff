@@ -1,15 +1,13 @@
 cff-version: 1.2.0
-title: "Assumption-Gated BioDesign Runtime: A Policy Framework for Trust-Aware Biodesign Tool Integration"
+title: "Assumption-Gated BioDesign Runtime: Governance Cases, Policy DSL, and Gate Evaluation Artifact"
 authors:
-  - family-names: "Zhang"
-    given-names: "Ze"
-    orcid: "https://orcid.org/0000-0000-0000-0000"
-    affiliation: "Stanford University"
-  - family-names: "Supplementary"
-    given-names: "Authors"
-    affiliation: "Research Institution"
+  - family-names: "Foo"
+    given-names: "Zhang Ze"
+    orcid: "https://orcid.org/0009-0003-5959-3154"
+    affiliation: "Independent Researcher, Malaysia"
 
-message: "Please cite this artifact if you use it in your research."
+message: "Please cite this artifact if you use it."
+type: software
 repository-code: "https://github.com/zhangze1007/Assumption-Gated-Biodesign-Runtime-Artifact"
 url: "https://github.com/zhangze1007/Assumption-Gated-Biodesign-Runtime-Artifact"
 license: "MIT"
@@ -17,24 +15,10 @@ keywords:
   - "biodesign"
   - "trust"
   - "policy"
-  - "assumption"
-  - "gates"
+  - "provenance"
+  - "governance"
   - "artifact"
   - "benchmark"
-date-released: "2024-01-01"
+date-released: "2026-05-04"
 abstract: |
-  This is the research artifact for "Assumption-Gated BioDesign Runtime: A Policy Framework 
-  for Trust-Aware Biodesign Tool Integration." The artifact includes a trust evaluation framework
-  for biodesign computational tools, a policy DSL for defining trust policies, and a benchmark
-  suite of 74 representative test cases covering various policy scenarios.
-
-  The artifact demonstrates how assumption gates can be used to prevent unsafe outputs from
-  propagating through biodesign workflows. It is not a third-party benchmark or product
-  certification; rather, it is a representative policy artifact for evaluation purposes.
-references:
-  - type: paper
-    authors:
-      - family-names: "Zhang"
-        given-names: "Ze"
-    title: "Assumption-Gated BioDesign Runtime: A Policy Framework for Trust-Aware Biodesign Tool Integration"
-    year: 2024
+  Public paper artifact for the manuscript "Assumption-Gated BioDesign Runtime: A Provenance-Aware Architecture for Safer Cross-Tool Reasoning in Synthetic Biology Workbenches." The artifact includes 74 governance cases, a policy DSL, a compact gate evaluator, benchmark outputs, and Figure 6 generation scripts. It is not the full Nexus-Bio product, a wet-lab validation, a third-party benchmark, or a regulatory certification.
