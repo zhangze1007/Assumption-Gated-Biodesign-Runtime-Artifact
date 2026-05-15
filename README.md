@@ -1,5 +1,12 @@
 # Assumption-Gated BioDesign Runtime - Paper Artifact
 
+![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=flat-square&logo=node.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.8+-FFD43B?style=flat-square&logo=python&logoColor=blue)
+![License](https://img.shields.io/badge/License-MIT-4CAF50?style=flat-square)
+![Benchmarks](https://img.shields.io/badge/Benchmarks-74_cases-9C27B0?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Paper_Artifact-FF9800?style=flat-square)
+
 This is the public research artifact for "Assumption-Gated BioDesign Runtime: A Provenance-Aware Architecture for Safer Cross-Tool Reasoning in Synthetic Biology Workbenches."
 
 The artifact demonstrates a trust evaluation framework for biodesign computational tools. It includes:
